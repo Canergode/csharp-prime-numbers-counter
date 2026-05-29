@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PrimeNumbersCounter
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CountPrimes();
+            Console.ReadLine();
+        }
+
+        private static void CountPrimes()
+        {
+            int count = 0;
+
+            // Check each number from 1 to 49
+            for (int i = 0; i < 50; i++)
+            {
+                if (IsPrime(i))
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine("There are " + count + " prime numbers between 1 and 50.");
+        }
+        // Check if a number is prime 
+        private static bool IsPrime(int number)
+        {
+            bool isPrime = true;
+
+            // 0 and 1 are not prime
+            if (number == 0 || number == 1)
+                return false;
+
+            // Check divisibility from 2 to number-1
+            for (int i = 2; i < number; i++)
+            {
+                if (number % i == 0)
+                    isPrime = false;
+            }
+            return isPrime;
+        }
+    }
+
+}
